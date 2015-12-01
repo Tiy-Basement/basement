@@ -16,5 +16,4 @@ get "/logout", to: "registrations#logout" #logout user
 #Edit Calendar Event
 #Delete Calendar Event
 #Push events to group calendar
-
-
+end
