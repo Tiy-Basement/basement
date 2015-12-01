@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+#groups
+post "/group", to: "groups#create"
+delete "/group", to: "groups#delete"
   
   #REGISTRATION CONTROLLER
 post "/signup", to: "registrations#create"  #creates a new user
@@ -15,5 +18,3 @@ get "/logout", to: "registrations#logout" #logout user
 #Push events to group calendar
 
 
-
-end
