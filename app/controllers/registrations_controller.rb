@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
 
-  def create
+  def create #need to make this ALSO log a user in!
     @user = User.new(email: params[:email],
                      username: params[:username],
                      password: params[:password],
