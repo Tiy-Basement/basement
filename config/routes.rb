@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-#groups
+
+  #GROUPS
 post "/group", to: "groups#create"
+put "/group/:id", to: "groups#edit"
 delete "/group", to: "groups#delete"
 
   #REGISTRATION CONTROLLER
 post "/signup", to: "registrations#create"  #creates a new user
-delete "/signup", to: "registrations#destroy" #deletes a user
+delete "/user/:id", to: "registrations#destroy" #deletes a user
 post "/login", to: "registrations#login"  #login user
 get "/logout", to: "registrations#logout" #logout user
 
@@ -17,3 +19,4 @@ get "/logout", to: "registrations#logout" #logout user
 #Delete Calendar Event
 #Push events to group calendar
 end
+

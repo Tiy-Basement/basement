@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+	
 	def create
 		groups_params[owner_id: current_user.id]
 		@group = current_user.groups.create(groups_params)
@@ -14,7 +15,7 @@ class GroupsController < ApplicationController
 
 	def delete
 		@group = current_user.groups.find_by(params[:name])
-		@group.distroy
+		@group.destroy
 	end
 		
 	def edit
@@ -26,7 +27,7 @@ class GroupsController < ApplicationController
 		@groups = current_user.groups.order("name")
 		render "index.json.jbuilder", status: :ok
 	end
-
+	
 	def groups_params
 		allow = [:category, :join_password, :public]
 		params.require(:name, :owner_id).permit(allow)
