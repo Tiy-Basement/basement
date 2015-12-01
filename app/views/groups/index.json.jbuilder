@@ -4,4 +4,5 @@ json.groups @groups do |group|
   json.category group.category
   json.public group.public
   json.id group.id
+  json.message "chocolate chip"
 end
