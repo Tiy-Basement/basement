@@ -6,9 +6,11 @@ post "/group/:id", to: "groups#edit"
 delete "/group", to: "groups#delete"
 post "/group/:id/member", to: "groups#addmember"
 delete "/group/:id/member", to: "groups#deletemember"
+  
   #COOKIE CONTROLLER
-post "cookie", to: "cookie#create"
-get "cookie", to: "cookie#get"
+get "/cookie", to: "cookie#get"
+post "/cookie", to: "cookie#create"
+  
   #REGISTRATION CONTROLLER
 post "/signup", to: "registrations#create"  #creates a new user
 delete "/user/:id", to: "registrations#destroy" #deletes a user

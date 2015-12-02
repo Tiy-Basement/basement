@@ -30,7 +30,7 @@ These docs are intended to assist front-end developers interested in integrating
 
 * [Group Methods](#grp-methods)
     * [Create New Group](#grp-new)
-    * [Editing Group Info](#grp-list)
+    * [Editing Group Info](#grp-edit)
     * [Delete Group](#grp-delete)
 
 
@@ -150,6 +150,7 @@ This allows you to update critical user info such as username, email, phone and 
 
 **Request**
     
+HEADERS: `Access-Token`
 
 | Parameter        | Type           | Description  |
 | ------------- |:-------------:|:----- |
@@ -271,10 +272,14 @@ This allows a registered user to create a new group calendar with themself as th
 
 **Request**
     
+HEADERS: `Access-Token`
 
 | Parameter        | Type           | Description  |
 | ------------- |:-------------:|:----- |
 | name | String | ​*(Required)*​  Name for group.  This does not need to be unique. |
+| category | String | A category type.  Not yet implemented |
+| join_password | String | An optional password for allowing users to join the group |
+| public | Boolean | Defaults to true.  Turns to false if join_password is given |
 
 
 **Response**
@@ -282,6 +287,54 @@ This allows a registered user to create a new group calendar with themself as th
 If successful, you will receive:
 
     Status Code: 201 - Created
+    
+```json
+    { "group": 
+            { "group_id": 1,
+              "name": "group name appears here"
+              "owner": "owner's username"
+              "owner_id": "owner's username"
+            }
+    }
+            
+```
+
+If unsuccessful, you will receive:
+
+    Status Code: 422 - Unprocessable Entity
+    
+```json
+    {"errors":[
+                "Username/Email has already been taken",
+                ]
+    }
+```
+
+###<a name="grp-edit"></a>Edit Group Info
+This allows the owner or admin to edit the basic information of a group, including changing the join password.
+
+**URL** /group/:id
+
+**Method** PUT
+
+**Request**
+
+HEADERS: `Access-Token`
+    
+
+| Parameter        | Type           | Description  |
+| ------------- |:-------------:|:----- |
+| name | String | ​*(Required)*​  Name for group.  This does not need to be unique. |
+| category | String | A category type.  Not yet implemented |
+| join_password | String | An optional password for allowing users to join the group |
+| public | Boolean | Defaults to true.  Turns to false if join_password is given |
+
+
+**Response**
+
+If successful, you will receive:
+
+    Status Code: 200 - OK
     
 ```json
     { "group": 
@@ -294,7 +347,6 @@ If successful, you will receive:
     }
             
 ```
-​*As long as you get the above, the  user is succeesfully created and stored.*​
 
 If unsuccessful, you will receive:
 
@@ -306,3 +358,30 @@ If unsuccessful, you will receive:
                 ]
     }
 ```
+
+###<a name="grp-delete"></a>Delete a Group
+
+This allows the group owner to delete a group from existence, which will also delete the group calendar and all events for group members.
+
+**URL** /group/:id
+
+**Method** DELETE
+
+**Request**
+    
+HEADERS: `Access-Token`
+
+**Response**
+
+If successful, you will receive:
+
+    Status Code: 200 - OK
+    
+```json
+    The group was deleted. 
+    Redirect-to User Profile  
+```
+
+If unsuccessful, you will receive:
+
+    Nothing because how can you screw this up?
