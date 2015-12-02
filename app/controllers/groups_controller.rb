@@ -29,13 +29,14 @@ class GroupsController < ApplicationController
 	end
 
 	def addmember
-
+		@member = current_user.members.create(user_id: current_user.id, group_id: @group.id)
 	end
 
 	def deletemember
-
+		@member = current_user.members.find_by(params[:user_id],params[:group_id])
+		@member.destroy
 	end
-	
+
 	def groups_params
 		allow = [:category, :join_password, :public]
 		params.require(:name, :owner_id).permit(allow)
