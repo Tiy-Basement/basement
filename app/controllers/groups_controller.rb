@@ -27,6 +27,14 @@ class GroupsController < ApplicationController
 		@groups = current_user.groups.order("name")
 		render "index.json.jbuilder", status: :ok
 	end
+
+	def addmember
+
+	end
+
+	def deletemember
+
+	end
 	
 	def groups_params
 		allow = [:category, :join_password, :public]

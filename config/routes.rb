@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   #GROUPS
 post "/group", to: "groups#create"
-put "/group/:id", to: "groups#edit"
+post "/group/:id", to: "groups#edit"
 delete "/group", to: "groups#delete"
+post "/group/:id/member", to: "groups#addmember"
+delete "/group/:id/member", to: "groups#deletemember"
 
   #REGISTRATION CONTROLLER
 post "/signup", to: "registrations#create"  #creates a new user
