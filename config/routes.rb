@@ -9,6 +9,8 @@ delete "/group/:id/member", to: "groups#deletemember"
   #COOKIE CONTROLLER
 post "cookie", to: "cookie#create"
 get "cookie", to: "cookie#get"
+  #NOTES CONTROLLER
+  
   #REGISTRATION CONTROLLER
 post "/signup", to: "registrations#create"  #creates a new user
 delete "/user/:id", to: "registrations#destroy" #deletes a user
