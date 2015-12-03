@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
 	def index
 		@groups = current_user.groups.order("name")
 		render "index.json.jbuilder", status: :ok
-		render json: { group: @group }, status: :ok
+
 	end
 
 	def addmember
