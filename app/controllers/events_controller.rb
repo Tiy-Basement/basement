@@ -27,7 +27,16 @@ class EventsController < ApplicationController
   def delete
   end
 
-  def index
+  def user_event_index
+    @user = User.find(id: params:[:user_id])
+    @events = @user.events.all
+    render "userindex.json.jbuilder", status: :ok
+  end
+
+  def group_event_index
+    @group = Group.find(id: params[:group_id])
+    @events = @group.events.all
+    render "groupindex.json.jbuilder"
   end
 
 end

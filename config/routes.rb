@@ -19,10 +19,13 @@ get "/logout", to: "registrations#logout" #logout user
 
   #USER
 get "/users", to: "users#index"
-#Update User Profile (name, email, etc)
-#Add Calendar Event
-#Edit Calendar Event
-#Delete Calendar Event
-#Push events to group calendar
+
+
+  #EVENTS
+get "/user/:id/events", to: "events#user_event_index"
+post "/user/:id/events", to: "events#create"  #as: usereventindex
+post "/group/:id/events", to: "events#create" #as: groupeventindex
+
+
 end
 
