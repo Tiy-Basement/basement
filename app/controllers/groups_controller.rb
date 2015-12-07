@@ -22,7 +22,6 @@ class GroupsController < ApplicationController
 	end
 		
 	def edit
-		# @group = Group.find_by(params[:name])
 		@group = Group.update_all(name: params[:name],category: params[:category], join_password: params[:join_password],
 												public: params[:public])
 		render json: { group: @group }, status: :ok
