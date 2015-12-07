@@ -1,11 +1,11 @@
 class GroupsController < ApplicationController
 	
 	def create
-		groups_params[owner_id: current_user.id]
-		@group = current_user.groups.create(groups_params)
+		@group = Group.create(name: params[:name],category: params[:category], join_password: params[:join_password],
+												public: params[:public])
 		#todo: if group join_password is given set public to false
 
-		@member = current_user.members.create(user_id: current_user.id, group_id: @group.id)
+		@member = Member.create(user_id: params[:owner_id], group_id: @group.id)
 
 		if @group.save
 			render json: { group: @group }, status: :ok
@@ -16,14 +16,15 @@ class GroupsController < ApplicationController
 	end
 
 	def delete
-		@group = current_user.groups.find_by(params[:name])
+		@group = Group.find_by(params[:name])
 		@group.destroy
 		render json: { group: @group }, status: :ok
 	end
 		
 	def edit
-		groups_params[owner_id: current_user.id]
-		@group = current_user.groups.update_all(groups_params)
+		# @group = Group.find_by(params[:name])
+		@group = Group.update_all(name: params[:name],category: params[:category], join_password: params[:join_password],
+												public: params[:public])
 		render json: { group: @group }, status: :ok
 	end
 
@@ -34,7 +35,7 @@ class GroupsController < ApplicationController
 	end
 
 	def addmember
-		@member = current_user.members.create(user_id: current_user.id, group_id: @group.id)
+		@member = Member.create(user_id: params[:user_id], group_id: params[:group_id])
 		render json: { member: @member }, status: :ok
 	end
 
