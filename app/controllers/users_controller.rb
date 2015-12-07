@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = Users.all
+    @users = User.all
+    render "index.json.jbuilder", status: :ok
   end
 
   def event_index

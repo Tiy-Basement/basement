@@ -17,8 +17,8 @@ delete "/user/:id", to: "registrations#destroy" #deletes a user
 post "/login", to: "registrations#login"  #login user
 get "/logout", to: "registrations#logout" #logout user
 
-  #USERS CONTROLLER
-#Get User Profile/Calendar
+  #USER
+get "/users", to: "users#index"
 #Update User Profile (name, email, etc)
 #Add Calendar Event
 #Edit Calendar Event
