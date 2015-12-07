@@ -1,8 +1,15 @@
 class GroupsController < ApplicationController
 	
 	def create
-		@group = Group.create(name: params[:name],category: params[:category], join_password: params[:join_password],
-												public: params[:public])
+		@group = Group.create(name: params[:name],
+													category: params[:category], 
+													join_password: params[:join_password],
+													owner_id: current_user.id
+													)#can I do public: function
+													#Where function = if join_pass, update public: false
+		if @group.join_password
+			@group.update(public: false)
+		end
 		#todo: if group join_password is given set public to false
 
 		@member = Member.create(user_id: params[:owner_id], group_id: @group.id)
