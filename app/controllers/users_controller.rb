@@ -11,3 +11,5 @@ class UsersController < ApplicationController
   end
 
 end
+
+#can we have 2 routes that go to the same method with optional params?

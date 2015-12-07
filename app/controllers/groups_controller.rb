@@ -5,8 +5,7 @@ class GroupsController < ApplicationController
 													category: params[:category], 
 													join_password: params[:join_password],
 													owner_id: current_user.id
-													)#can I do public: function
-													#Where function = if join_pass, update public: false
+													)
 		if @group.join_password
 			@group.update(public: false)
 		end
