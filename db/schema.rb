@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20151207150953) do
     t.integer  "owner_id"
     t.string   "category"
     t.string   "join_password"
-    t.boolean  "public"
+    t.boolean  "public", default: true
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
