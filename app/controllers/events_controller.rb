@@ -20,7 +20,6 @@ class EventsController < ApplicationController
       end
     end
     #code to send text/email alert goes here
-  end
 
   def edit
   end
