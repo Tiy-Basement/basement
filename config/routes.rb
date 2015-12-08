@@ -6,7 +6,7 @@ post "/group/:id", to: "groups#edit"
 delete "/group", to: "groups#delete"
 post "/group/:id/member", to: "groups#addmember"
 delete "/group/:id/member", to: "groups#deletemember"
-  
+
   #COOKIE CONTROLLER
 get "/cookie", to: "cookie#get"
 post "/cookie", to: "cookie#create"
@@ -19,7 +19,7 @@ get "/logout", to: "registrations#logout" #logout user
 
   #USER
 get "/users", to: "users#index"
-
+get "/users/:id/groups", to: "users#groups"
 
   #EVENTS
 get "/user/:id/events", to: "events#user_event_index"

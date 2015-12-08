@@ -10,6 +10,12 @@ class UsersController < ApplicationController
     @user.events.all
   end
 
+  def groups
+		@groups = current_user.groups.order("name")
+		render "groups.json.jbuilder", status: :ok
+
+   end
+
 end
 
 #can we have 2 routes that go to the same method with optional params?
