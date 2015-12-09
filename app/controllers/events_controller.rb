@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   end
 
   def user_event_index
-    @user = User.find(id: params[:user_id])
+    @user = User.find(id: current_user.id)
     @events = @user.events.all
     render "userindex.json.jbuilder", status: :ok
   end

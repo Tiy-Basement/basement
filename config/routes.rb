@@ -22,9 +22,9 @@ get "/users", to: "users#index"
 get "/users/:id/groups", to: "users#groups"
 
   #EVENTS
-get "/user/:id/events", to: "events#user_event_index"
+get "/events", to: "events#user_event_index"
 #post "/user/:id/events", to: "events#create"  #as: usereventindex
-post "/event", to: "events#create"
+post "/events", to: "events#create"
 
 
 end
