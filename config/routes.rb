@@ -22,7 +22,7 @@ get "/users", to: "users#index"
 get "/users/groups", to: "users#groups"
 
   #EVENTS CONTROLLER
-get "/user/events", to: "events#user_event_index"
+get "/events/user", to: "events#user_event_index"
 get "/group/events", to: "events#group_event_index"  #as: usereventindex
 post "/events", to: "events#create"
 put "/events/:id", to: "events#edit"

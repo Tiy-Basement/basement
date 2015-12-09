@@ -33,6 +33,23 @@ These docs are intended to assist front-end developers interested in integrating
     * [Editing Group Info](#grp-edit)
     * [Delete Group](#grp-delete)
 
+* [Membership Methods](#mem-methods)
+	* [Add Memeber to Group](#mem-create)
+	* [Remove a Member](#mem-destroy)
+
+* [Event Methods](#evt-methods)
+	* [Creating An Event](#evt-create)
+	* [Editing an Event](#evt-edti)
+	* [Delete an Event](#evt-delete)
+	* [Index of User's Events](#evt-uservents)
+	* [Index of Group's Events](#evt-groupvents)
+
+* [Note Methods](#note-methods)
+	* [Create A Note](#note-create)
+	* [Edit a Note](#note-edit)
+	* [Display a Note](#note-display)
+	* [Delete a Note](#note-delete)
+
 
 
 ##<a name="reg-methods"></a>Registrations and User Methods
@@ -385,3 +402,54 @@ If successful, you will receive:
 If unsuccessful, you will receive:
 
     Nothing because how can you screw this up?
+
+
+
+##<a name="mem-methods"></a>Membership Methods
+###<a name="mem-create"></a>Create a new Member
+
+This creates a new member of a group, linking a user to a group through a join table.  NOTE: Owners are added to the table by default
+
+**URL** /
+
+**Method** POST
+
+**Request**
+    
+
+| Parameter        | Type           | Description  |
+| ------------- |:-------------:|:----- |
+| email  | String | ​*(Required)*​  Unique email that actually works |
+| password    | String      |  ​*(Required)*​  Password for the user |
+| username | String | ​*(Required)*​ A username that you can remember and will identify you throughout the site |
+| phone | String | A contact phone number with text capabilities.  THIS MUST BE SENT TO THE SERVER AS A STRING IN THE FOLLOWING FORMAT: "+14045551234" |
+
+
+**Response**
+
+If successful, you will receive:
+
+    Status Code: 201 - Created
+    
+```json
+    { "user": 
+            { "user_id": 1,
+              "username": "username appears here"
+              "email": "email appears here"
+              "phone": "+14045551234"
+            }
+       "access_token": "The Access-Token for the Owner"
+    }
+            
+```
+
+If unsuccessful, you will receive:
+
+    Status Code: 422 - Unprocessable Entity
+    
+```json
+    {"errors":[
+                "Username/Email has already been taken",
+                ]
+    }
+```
