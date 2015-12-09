@@ -41,6 +41,10 @@ class GroupsController < ApplicationController
 
 	end
 
+	def search
+		@results = Group.find_by_sql("SELECT * FROM group WHERE name LIKE '%#{params[:name]}%'")
+		render "search.json.jbuilder", status: :ok
+	end
 	#def addmember
 	#	@member = Member.create(user_id: params[:user_id], group_id: params[:group_id])
 	#	render json: { member: @member }, status: :ok
