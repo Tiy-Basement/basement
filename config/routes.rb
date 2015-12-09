@@ -22,8 +22,8 @@ get "/users", to: "users#index"
 get "/users/:id/groups", to: "users#groups"
 
   #EVENTS
-get "/events", to: "events#user_event_index"
-#post "/user/:id/events", to: "events#create"  #as: usereventindex
+get "/user/events", to: "events#user_event_index"
+get "/group/events", to: "events#group_event_index"  #as: usereventindex
 post "/events", to: "events#create"
 
 
