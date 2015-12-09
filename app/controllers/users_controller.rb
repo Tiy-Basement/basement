@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  def index
+  def index #used by site admin to get list of all registered users
     @users = User.all
     render "index.json.jbuilder", status: :ok
   end
@@ -18,4 +18,3 @@ class UsersController < ApplicationController
 
 end
 
-#can we have 2 routes that go to the same method with optional params?

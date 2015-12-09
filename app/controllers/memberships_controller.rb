@@ -1,10 +1,12 @@
 class MembershipsController < ApplicationController
-	def add
+	
 
+  def add
+    
 	end
 
 	def remove
-
+    
 	end
 	
 end
