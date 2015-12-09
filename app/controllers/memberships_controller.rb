@@ -2,7 +2,8 @@ class MembershipsController < ApplicationController
 	
 
   	def add
-    	@member = Member.create(user_id: params[:user_id], group_id: params[:group_id])
+    	@member = Member.create(user_id: params[:user_id], 
+                              group_id: params[:group_id])
 		render json: "member.json.jbuilder", status: :ok
 	end
 

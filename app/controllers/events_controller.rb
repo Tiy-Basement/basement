@@ -50,4 +50,10 @@ class EventsController < ApplicationController
     render "groupindex.json.jbuilder"
   end
 
+  def calendar_event_index
+   @events = current_user.events.where(start: params[:start],
+                                       end: params[:end])
+  render "caluserindex.json.jbuilder", status: :ok
+end
+
 end

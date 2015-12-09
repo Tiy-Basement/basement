@@ -22,11 +22,12 @@ get "/users", to: "users#index"
 get "/users/groups", to: "users#groups"
 
   #EVENTS CONTROLLER
-get "/events/user", to: "events#user_event_index"
+get "/user/:id/events", to: "events#user_event_index"
 get "/group/events", to: "events#group_event_index"  #as: usereventindex
 post "/events", to: "events#create"
 put "/events/:id", to: "events#edit"
 delete "/events/:id", to: "events#delete"
+get "/user/:id/events/calendar", to: "events#calendar_user_index"
   
   #MEMBERSHIP CONTROLLER
 post "/group/:id/members", to: "memberships#add"

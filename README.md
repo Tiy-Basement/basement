@@ -410,20 +410,19 @@ If unsuccessful, you will receive:
 
 This creates a new member of a group, linking a user to a group through a join table.  NOTE: Owners are added to the table by default
 
-**URL** /
+**URL** /group/:id/members
 
 **Method** POST
 
 **Request**
+
+HEADERS: `Access-Token`
     
 
 | Parameter        | Type           | Description  |
 | ------------- |:-------------:|:----- |
-| email  | String | ​*(Required)*​  Unique email that actually works |
-| password    | String      |  ​*(Required)*​  Password for the user |
-| username | String | ​*(Required)*​ A username that you can remember and will identify you throughout the site |
-| phone | String | A contact phone number with text capabilities.  THIS MUST BE SENT TO THE SERVER AS A STRING IN THE FOLLOWING FORMAT: "+14045551234" |
-
+| user_id  | Integer | ​*(Required)*​  The ID of the user being added to a given group. |
+| group_id    | Integer      |  ​*(Required)*​  The ID of the group the user is being added to. |
 
 **Response**
 
@@ -432,14 +431,14 @@ If successful, you will receive:
     Status Code: 201 - Created
     
 ```json
-    { "user": 
-            { "user_id": 1,
-              "username": "username appears here"
-              "email": "email appears here"
-              "phone": "+14045551234"
+    { "Member": 
+            { 
+            	 "id": 1
+              "user_id": 1,
+              "group_id": 2,
+              
             }
-       "access_token": "The Access-Token for the Owner"
-    }
+           }
             
 ```
 
@@ -449,7 +448,35 @@ If unsuccessful, you will receive:
     
 ```json
     {"errors":[
-                "Username/Email has already been taken",
+                "That group/user does not exist.",
                 ]
     }
 ```
+
+###<a name="mem-destroy"></a>Remove a Member
+
+This removes the given member from the group.
+
+**URL** /group/:id/members
+
+**Method** delete
+
+**Request**
+
+HEADERS: `Access-Token`
+   
+
+**Response**
+
+If successful, you will receive:
+
+    Status Code: 200 - OK
+    
+If unsuccessful, you will receive:
+
+   ```Nothing because that's what you deserve.```
+
+
+###<a name="evt-methods"></a>
+
+evt-methods
