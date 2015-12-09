@@ -36,7 +36,7 @@ class EventsController < ApplicationController
   def group_event_index
     @group = Group.find(id: params[:group_id])
     @events = @group.events.all
-    render "groupindex.json.jbuilder"
+    render "groupindex.json.jbuilder", status: :ok
   end
 
 end
