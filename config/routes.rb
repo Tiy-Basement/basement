@@ -25,7 +25,9 @@ get "/users/:id/groups", to: "users#groups"
 get "/user/events", to: "events#user_event_index"
 get "/group/events", to: "events#group_event_index"  #as: usereventindex
 post "/events", to: "events#create"
-
+  #MEMBERSHIP
+post "/group/:id/member/:id", to: "memberships#add"
+delete "/group/:id/member/:id", to: "memberships#delete"
 
 end
 
