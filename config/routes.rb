@@ -19,7 +19,7 @@ get "/logout", to: "registrations#logout" #logout user
 
   #USER
 get "/users", to: "users#index"
-get "/users/:id/groups", to: "users#groups"
+get "/users/groups", to: "users#groups"
 
   #EVENTS
 get "/user/events", to: "events#user_event_index"
