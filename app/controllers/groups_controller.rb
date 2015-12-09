@@ -41,16 +41,16 @@ class GroupsController < ApplicationController
 
 	end
 
-	def addmember
-		@member = Member.create(user_id: params[:user_id], group_id: params[:group_id])
-		render json: { member: @member }, status: :ok
-	end
+	#def addmember
+	#	@member = Member.create(user_id: params[:user_id], group_id: params[:group_id])
+	#	render json: { member: @member }, status: :ok
+	#end
 
-	def deletemember
-		@member = current_user.members.find_by(params[:user_id],params[:group_id])
-		@member.destroy
-		render json: { member: @member }, status: :ok
-	end
+	#def deletemember
+	#	@member = current_user.members.find_by(params[:user_id],params[:group_id])
+	#	@member.destroy
+	#	render json: { member: @member }, status: :ok
+	#end
 
 	def groups_params
 		allow = [:category, :join_password, :public]

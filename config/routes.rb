@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 post "/group", to: "groups#create"
 post "/group/:id", to: "groups#edit"
 delete "/group", to: "groups#delete"
-post "/group/:id/member", to: "groups#addmember"
-delete "/group/:id/member", to: "groups#deletemember"
+#post "/group/:id/member", to: "groups#addmember"
+#delete "/group/:id/member", to: "groups#deletemember"
 
   #COOKIE CONTROLLER
 get "/cookie", to: "cookie#get"
@@ -17,17 +17,26 @@ delete "/user/:id", to: "registrations#destroy" #deletes a user
 post "/login", to: "registrations#login"  #login user
 get "/logout", to: "registrations#logout" #logout user
 
-  #USER
+  #USER CONTROLLER
 get "/users", to: "users#index"
 get "/users/groups", to: "users#groups"
 
-  #EVENTS
+  #EVENTS CONTROLLER
 get "/user/events", to: "events#user_event_index"
 get "/group/events", to: "events#group_event_index"  #as: usereventindex
 post "/events", to: "events#create"
-  #MEMBERSHIP
-post "/group/:id/member/:id", to: "memberships#add"
+put "/events/:id", to: "events#edit"
+delete "/events/:id", to: "events#delete"
+  
+  #MEMBERSHIP CONTROLLER
+post "/group/:id/members", to: "memberships#add"
 delete "/group/:id/member/:id", to: "memberships#delete"
+
+  #NOTES CONTROLLER
+get "/notes", to: "notes#index"
+post "/notes", to: "notes#create"
+get "/notes/:id", to: "notes#show"
+delete "/notes/:id", to: "notes#delete"
 
 end
 
