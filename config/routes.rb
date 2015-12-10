@@ -22,6 +22,7 @@ get "/users", to: "users#index"
 get "/users/groups", to: "users#groups"
 get "/users/:id/info", to: "users#user_info"
 
+
   #EVENTS CONTROLLER
 get "/user/:id/events", to: "events#user_event_index"
 get "/group/events", to: "events#group_event_index"  #as: usereventindex

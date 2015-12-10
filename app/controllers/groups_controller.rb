@@ -11,7 +11,8 @@ class GroupsController < ApplicationController
 		end
 		#todo: if group join_password is given set public to false
 
-		@member = Member.create(user_id: params[:owner_id], group_id: @group.id)
+		@member = Member.create(user_id: current_user.id, 
+														group_id: @group.id)
 
 		if @group.save
 			render json: { group: @group }, status: :ok
