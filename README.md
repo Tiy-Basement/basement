@@ -477,6 +477,54 @@ If unsuccessful, you will receive:
    ```Nothing because that's what you deserve.```
 
 
-###<a name="evt-methods"></a>
 
-evt-methods
+##<a name="evt-methods"></a>Event Methods
+###<a name="evt-create"></a>Create an Event
+This is the route used to crete events for both users AND groups!
+When an event is created, the user that creates the event is automatically associated with the event, and it will fall under that user's index.  When an event is created for a GROUP calendar, the event will contain both the id of the user who created it AND the id of the group it was created for.  The only difference is that in one case you send only the user_id, and in the other you send both the User_id and the group_id.
+
+**URL** /events
+
+**Method** POST
+
+**Request**
+
+HEADERS: `Access-Token`
+    
+
+| Parameter        | Type           | Description  |
+| ------------- |:-------------:|:----- |
+| user_id  | Integer | ​*(Required)*​  The ID of the user being added to a given group. |
+| group_id    | Integer      |  ​*(Required)*​  The ID of the group the user is being added to. |
+| group_id    | Integer      |  ​*(Required)*​  The ID of the group the user is being added to. |
+| group_id    | Integer      |  ​*(Required)*​  The ID of the group the user is being added to. |
+| group_id    | Integer      |  ​*(Required)*​  The ID of the group the user is being added to. |
+
+**Response**
+
+If successful, you will receive:
+
+    Status Code: 201 - Created
+    
+```json
+    { "Member": 
+            { 
+            	 "id": 1
+              "user_id": 1,
+              "group_id": 2,
+              
+            }
+           }
+            
+```
+
+If unsuccessful, you will receive:
+
+    Status Code: 422 - Unprocessable Entity
+    
+```json
+    {"errors":[
+                "That group/user does not exist.",
+                ]
+    }
+```
