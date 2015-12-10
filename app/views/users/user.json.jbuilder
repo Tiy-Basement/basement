@@ -2,7 +2,7 @@ json.user @user
 	json.email @user.email
 	json.username @user.username
 	json.phone @user.phone
-end
+
 
 json.result @groups do |group|
   json.name group.name
