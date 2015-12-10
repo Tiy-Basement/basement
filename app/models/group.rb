@@ -1,5 +1,4 @@
 class Group < ActiveRecord::Base
-  has_many :users, through: :members
-  belongs_to :members
+  has_and_belongs_to_many :users
   has_many :events
 end

@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :groups, through: :members
-  belongs_to :members
+  has_and_belongs_to_many :groups
   has_many :events
   has_secure_password
 
