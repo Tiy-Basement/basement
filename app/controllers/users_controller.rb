@@ -16,5 +16,11 @@ class UsersController < ApplicationController
 
    end
 
+  def user_info
+    @user = current_user
+    @groups = Group.where(user_id: current_user.id).order("name")
+    render "user.json.jbuilder" , status: :ok
+
+  end
 end
 
