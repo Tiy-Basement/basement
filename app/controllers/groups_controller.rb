@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
 	
 	def create
+
 		@group = Group.create(name: params[:name],
 													category: params[:category], 
 													join_password: params[:join_password],
