@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :groups, through: :members
   has_many :members
+  has_many :events
   has_secure_password
 
   before_validation :ensure_access_token!
