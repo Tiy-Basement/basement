@@ -20,8 +20,9 @@ class UsersController < ApplicationController
    end
 
   def user_info
-    @user = current_user
-    @groups = Group.where(user_id: current_user.id).order("name")
+    @user = User.where(id: params[:id])
+    @groups = @user.groups
+binding.pry
     render "user.json.jbuilder" , status: :ok
 
   end
