@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   #GROUPS
+get "/groups", to: "groups#index"
 post "/group", to: "groups#create"
 post "/group/:id", to: "groups#edit"
 delete "/group/:id", to: "groups#delete"
