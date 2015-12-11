@@ -1,4 +1,4 @@
-json.events @events do |event|
+json.array! (@events) do |event|
   json.title event.title
   json.start event.start
   json.end event.end
