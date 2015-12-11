@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #GROUPS
 post "/group", to: "groups#create"
 post "/group/:id", to: "groups#edit"
-delete "/group", to: "groups#delete"
+delete "/group/:id", to: "groups#delete"
 #post "/group/:id/member", to: "groups#addmember"
 #delete "/group/:id/member", to: "groups#deletemember"
 

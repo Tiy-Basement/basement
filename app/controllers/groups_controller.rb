@@ -24,7 +24,7 @@ binding.pry
 	end
 
 	def delete
-		@group = Group.find_by(params[:name])
+		@group = Group.find_by(params[:id])
 		@group.destroy
 		render json: { group: @group }, status: :ok
 	end
