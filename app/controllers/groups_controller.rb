@@ -38,7 +38,7 @@ binding.pry
 	end
 
 	def index
-		@groups = Groups.all
+		@groups = Group.all
 		render "index.json.jbuilder", status: :ok
 
 	end
