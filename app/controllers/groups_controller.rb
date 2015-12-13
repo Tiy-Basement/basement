@@ -38,7 +38,7 @@ binding.pry
 	end
 
 	def index
-		@groups = current_user.groups.order("name")
+		@groups = Group.all
 		render "index.json.jbuilder", status: :ok
 
 	end
