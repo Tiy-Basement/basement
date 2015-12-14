@@ -12,5 +12,10 @@ class MembershipsController < ApplicationController
 		@member.destroy
 		render json: "killmember.json.jbuilder", status: :ok
 	end
+
+  def memberindex
+    @members = Groups_Users.all
+    render json: "memberindex.json.jbuilder", status: :ok
+  end
 	
 end
