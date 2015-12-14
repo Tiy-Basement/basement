@@ -15,7 +15,7 @@ class MembershipsController < ApplicationController
 	end
 
 	def memberindex
-	    @members = Groups_Users.all
+	    @members = Group.users.where(id: group.id)
 	    render  "memberindex.json.jbuilder", status: :found
 	end
 		

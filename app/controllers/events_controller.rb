@@ -81,7 +81,7 @@ def groupevents
 end
 
 def memberevents
-  @users = Group.users.all
+  @users = Group.users.where(id: params[:group_id])
   @users.each do |user|
     @events = Event.where(user_id: user.id)
     #append to all events
