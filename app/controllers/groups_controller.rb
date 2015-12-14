@@ -30,7 +30,8 @@ class GroupsController < ApplicationController
 	end
 		
 	def edit
-		@group = Group.update_all(name: params[:name],
+		@group = Group.find_by(id: params[:id])
+		@group.update(name: params[:name],
 															category: params[:category], 
 															join_password: params[:join_password],
 															public: params[:public])
