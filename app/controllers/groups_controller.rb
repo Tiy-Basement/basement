@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
 			@group.update(public: false)
 		end
 		#todo: if group join_password is given set public to false
-binding.pry
+		#binding.pry
 		#@member = Group_User.create(user_id: current_user.id, 
 														#group_id: @group.id)
 
