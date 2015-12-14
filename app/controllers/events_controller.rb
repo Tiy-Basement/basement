@@ -28,7 +28,7 @@ class EventsController < ApplicationController
                      location: params[:location],
                      note: params[:note],
                      user_id: current_user.id,
-                     group_id: :id)
+                     group_id: params[:id])
     if @event.save
       render "create.json.jbuilder", status: :created
     else
