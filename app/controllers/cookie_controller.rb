@@ -1,10 +1,13 @@
 class CookieController < ApplicationController
 	def create
-		@cookie = Cookiejars.create(params[:cookie])
+		@cookie = Cookiejar.create(cookie: params[:cookie])
+		render "yay.json.jbuilder", status: :created
 	end
 
 	def get
-		@cookie = Cookiejars.sample
-		render "cookie.json.jbuilder", status: :ok
+		offset = rand(Cookiejar.count)
+		@cookie = Cookiejar.offset(offset).first
+	
+		render "cookie.json.jbuilder", status: :found
 	end
 end
