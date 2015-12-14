@@ -35,9 +35,8 @@ get "/user/:id/events/calendar", to: "events#calendar_user_index"
 get "events/:id", to: "events#find_id"
   
   #MEMBERSHIP CONTROLLER
-post "/group/:id/member", to: "memberships#add"
+post "/group/member", to: "memberships#add"
 #get "/members", to: "memberships#memberindex"
-post "/group/:id/members", to: "memberships#add"
 delete "/group/:id/member/:id", to: "memberships#delete"
 
   #NOTES CONTROLLER
