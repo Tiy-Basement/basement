@@ -4,7 +4,7 @@ json.user @user
 	json.phone @user.phone
 
 
-json.result @groups do |group|
+json.groups @groups do |group|
   json.name group.name
   json.owner group.owner_id
   json.category group.category
