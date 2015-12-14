@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
 	
 	def create
 
-		@group = Group.create(name: params[:name],
+		@group = current_user.groups.create(name: params[:name],
 													category: params[:category], 
 													join_password: params[:join_password],
 													owner_id: current_user.id
@@ -12,8 +12,8 @@ class GroupsController < ApplicationController
 		end
 		#todo: if group join_password is given set public to false
 		#binding.pry
-		@member = current_user.groups.create(user_id: current_user.id, 
-																group_id: @group.id)
+		#@member = current_user.groups.create(user_id: current_user.id, 
+		#														group_id: @group.id)
 
 		if @group.save
 			render json: { group: @group }, status: :ok
