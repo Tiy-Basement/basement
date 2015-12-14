@@ -56,6 +56,12 @@ class EventsController < ApplicationController
    @events = current_user.events.where(start: params[:start],
                                        end: params[:end])
   render "caluserindex.json.jbuilder", status: :ok
-end
+  end
+
+  def find_id
+    @event = Event.find_by(title: params[:title])
+    render "id.json.jbuilder", status: :ok
+  end
+
 
 end
