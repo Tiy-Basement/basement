@@ -28,7 +28,7 @@ class EventsController < ApplicationController
                      location: params[:location],
                      note: params[:note],
                      user_id: current_user.id,
-                     group_id: :id)
+                     group_id: params[:id])
     if @event.save
       render "create.json.jbuilder", status: :created
     else
@@ -63,7 +63,7 @@ class EventsController < ApplicationController
 
   def group_event_index
     #@group = Group.find_by(id: :id)
-    @events = Event.find_by(group_id: :id)
+    @events = Events.find_by(group_id: :id)
     render "groupindex.json.jbuilder"
   end
 
