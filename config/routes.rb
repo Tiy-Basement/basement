@@ -21,7 +21,7 @@ get "/logout", to: "registrations#logout" #logout user
   #USER CONTROLLER
 get "/users", to: "users#index"
 get "/users/groups", to: "users#groups"
-get "/users/:id/info", to: "users#user_info"
+get "/users/info", to: "users#user_info"
 
 
   #EVENTS CONTROLLER
