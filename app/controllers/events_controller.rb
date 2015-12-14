@@ -78,5 +78,14 @@ class EventsController < ApplicationController
     render "id.json.jbuilder", status: :ok
   end
 
+def groupevents
+  @events = Event.where(group_id: params[:group_id])
+  render "events.json.jbuilder", status: :found
+end
+
+def memberevents
+  @events = Event.where(user_id: params[:user_id])
+  render "events.json.jbuilder", status: :found
+end
 
 end

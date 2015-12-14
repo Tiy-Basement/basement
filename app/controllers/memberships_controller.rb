@@ -11,7 +11,7 @@ class MembershipsController < ApplicationController
 	def remove
     	@member = current_user.members.find_by(user_id: params[:user_id],group_id: params[:group_id])
 		@member.destroy
-		render "killmember.json.jbuilder", status: :removed_permanently
+		render "killmember.json.jbuilder", status: :removed_permenently
 	end
 
 	def memberindex
