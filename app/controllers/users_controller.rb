@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   def user_info #used to retrieve a users info plus all of their groups
       @user = User.find_by(id: current_user.id)
       @groups = current_user.groups.order("name")
-      binding.pry
       render "user.json.jbuilder" , status: :ok  
   end
 end
