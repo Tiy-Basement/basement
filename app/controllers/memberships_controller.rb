@@ -14,9 +14,9 @@ class MembershipsController < ApplicationController
 		render "killmember.json.jbuilder", status: :ok
 	end
 
-  def memberindex
-    @members = Groups_Users.all
-    render  "memberindex.json.jbuilder", status: :ok
-  end
-	
+	def memberindex
+	    @members = Groups_Users.all
+	    render  "memberindex.json.jbuilder", status: :ok
+	end
+		
 end
