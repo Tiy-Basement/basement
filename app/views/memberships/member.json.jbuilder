@@ -1,5 +1,5 @@
-json.membership do
-	json.user_id @member.user_id
-	json.group_id @member.group_id
+json.member do
+	json.user_id @member.id
+	json.group_id @member.group.id
 	json.message "Justin Beiber Sucks"
 end

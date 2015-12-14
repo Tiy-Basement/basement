@@ -2,8 +2,12 @@ class MembershipsController < ApplicationController
 	
 
   	def add
-    	@member = Groups_user.create(user_id: params[:user_id], 
-                              group_id: params[:group_id])
+  		@member = User.find(id: params[:user_id])
+  		@group = Group.find(id: :id)
+  		@member.groups << @group
+  		binding.pry
+    	#@member = Groups.current_user.create(user_id: params[:user_id], 
+         #                     group_id: :id)
 		render json: "member.json.jbuilder", status: :ok
 	end
 
