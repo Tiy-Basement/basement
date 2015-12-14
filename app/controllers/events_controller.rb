@@ -54,14 +54,20 @@ class EventsController < ApplicationController
   end
 
   def user_event_index
-    @events = current_user.events
+    #@user = User.find_by(id: params[:id]) #need to implement query params for start and end
+    @events = Event.where(user_id: params[:id])
+    #binding.pry
+    #@events = @user.events.all
+
+    #@events = current_user.events
     render "userindex.json.jbuilder", status: :ok
   end
 
   def group_event_index
     #@group = Group.find_by(id: :id)
-    @events = Event.find_by(group_id: :id)
-    render "groupindex.json.jbuilder"
+    @events = Event.where(group_id: params[:id])
+    #binding.pry
+    render "groupindex.json.jbuilder", status: :ok
   end
 
   def calendar_event_index
