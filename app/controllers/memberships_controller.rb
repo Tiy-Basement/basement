@@ -2,24 +2,21 @@ class MembershipsController < ApplicationController
 	
 
   	def add
-  		@member = User.find(id: params[:user_id])
-  		@group = Group.find(id: :id)
+  		@member = User.find_by(id: params[:user_id])
+  		@group = Group.find_by(id: params[:group_id])
   		@member.groups << @group
-  		binding.pry
-    	#@member = Groups.current_user.create(user_id: params[:user_id], 
-         #                     group_id: :id)
-		render json: "member.json.jbuilder", status: :ok
+		render "member.json.jbuilder", status: :ok
 	end
 
 	def remove
     	@member = current_user.members.find_by(user_id: params[:user_id],group_id: params[:group_id])
 		@member.destroy
-		render json: "killmember.json.jbuilder", status: :ok
+		render "killmember.json.jbuilder", status: :ok
 	end
 
   def memberindex
     @members = Groups_Users.all
-    render json: "memberindex.json.jbuilder", status: :ok
+    render  "memberindex.json.jbuilder", status: :ok
   end
 	
 end
