@@ -84,7 +84,8 @@ def groupevents
 end
 
 def memberevents
-  @events = Event.where(user_id: params[:user_id])
+
+  @events = Group.events.where(user_id: params[:user_id])
   render "events.json.jbuilder", status: :found
 end
 
