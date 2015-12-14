@@ -21,6 +21,21 @@ class EventsController < ApplicationController
     end
     #code to send text/email alert goes here
 
+  def groupcreate
+    @event = Event.new(title: params[:title],
+                       start: params[:start],
+                     end: params[:end],
+                     location: params[:location],
+                     note: params[:note],
+                     user_id: current_user.id,
+                     group_id: :id)
+    if @event.save
+      render "create.json.jbuilder", status: :created
+    else
+      render json: {errors: @user.errors.full_messages}
+    end
+  end
+
   def edit
     @event = Group.update_all(title: params[:title],
                        start: params[:start],
