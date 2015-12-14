@@ -58,6 +58,8 @@ class EventsController < ApplicationController
     @events = Event.where(user_id: params[:id])
     #binding.pry
     #@events = @user.events.all
+
+    #@events = current_user.events
     render "userindex.json.jbuilder", status: :ok
   end
 
