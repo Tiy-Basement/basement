@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
 													owner_id: current_user.id
 													)
 		if @group.join_password
-			@group.update(public: false)
+			@group.update(public: true)
 		end
 		#todo: if group join_password is given set public to false
 		#binding.pry
