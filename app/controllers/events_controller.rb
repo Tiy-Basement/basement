@@ -63,7 +63,7 @@ class EventsController < ApplicationController
 
   def group_event_index
     #@group = Group.find_by(id: :id)
-    @events = Event.where(group_id: :id)
+    @events = Event.find_by(group_id: :id)
     render "groupindex.json.jbuilder"
   end
 
