@@ -12,13 +12,9 @@ class UsersController < ApplicationController
    end
 
   def user_info #used to retrieve a users info plus all of their groups
-    begin
-      @user = User.where(id: params[:id])
+      @user = User.find_by(id: current_user.id)
       @groups = current_user.groups.order("name")
       render "user.json.jbuilder" , status: :ok  
-    rescue => e
-      Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
-    end
   end
 end
 

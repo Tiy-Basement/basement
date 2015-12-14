@@ -1,10 +1,11 @@
-json.user @user 
+json.user do
+	json.id @user.id
 	json.email @user.email
 	json.username @user.username
 	json.phone @user.phone
+end
 
-
-json.result @groups do |group|
+json.groups @groups do |group|
   json.name group.name
   json.owner group.owner_id
   json.category group.category
