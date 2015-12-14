@@ -81,8 +81,13 @@ def groupevents
 end
 
 def memberevents
+  @users = Group.users.all
+  @users.each do |user|
+    @events = Event.where(user_id: user.id)
+    #append to all events
+  end
 
-  @events = Group.events.where(user_id: params[:user_id])
+  
   render "events.json.jbuilder", status: :found
 end
 
