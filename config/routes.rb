@@ -31,7 +31,7 @@ post "/events", to: "events#create"
 put "/events/:id", to: "events#edit"
 delete "/events/:id", to: "events#delete"
 get "/user/:id/events/calendar", to: "events#calendar_user_index"
-  
+get "events/id", to "events#find_id"
   #MEMBERSHIP CONTROLLER
 post "/group/:id/members", to: "memberships#add"
 delete "/group/:id/member/:id", to: "memberships#delete"
