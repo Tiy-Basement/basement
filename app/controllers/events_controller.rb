@@ -99,7 +99,6 @@ def memberevents
         all_the_things.add(@events)
     end
     render :json=>all_the_things , status: :found
-
 end
 
 end
