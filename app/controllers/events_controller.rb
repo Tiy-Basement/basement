@@ -75,8 +75,7 @@ class EventsController < ApplicationController
   end
 
   def calendar_event_index
-   @events = current_user.events.where(start: params[:start],
-                                       end: params[:end])
+   @events = current_user.events.where
   render "caluserindex.json.jbuilder", status: :ok
   end
 
@@ -91,8 +90,8 @@ def groupevents
   #use already created template?
 end
 
-def memberevents
-  @group = Group.find(params[:group_id])
+def member_events_index
+  @group = Group.where(group_id: params[:id])
   @events = @group.member_events
   render @events, status: :found
 end
