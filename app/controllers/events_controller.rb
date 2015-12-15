@@ -100,10 +100,6 @@ def memberevents
     end
     render :json=>all_the_things , status: :found
 
-  end
-
-  
-  render "events.json.jbuilder", status: :found
 end
 
 end
