@@ -64,8 +64,8 @@ class EventsController < ApplicationController
   end
 
   def event_index
-    @events = Event.all
-    render "groupindex.json.jbuilder", status: :ok
+    @events = Event.where(title: null)
+    render "alleventindex.json.jbuilder", status: :ok
   end
 
   def calendar_event_index
