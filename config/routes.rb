@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   #GROUPS
 get "/groups", to: "groups#index"
+get "/group/:id/info", to: "groups#info"
 post "/group", to: "groups#create"
 put "/group/:id", to: "groups#edit"
 delete "/group/:id", to: "groups#delete"
-get "/group/:id/info", to: "groups#info"
+
 
   #COOKIE CONTROLLER
 get "/cookie", to: "cookie#get"
@@ -34,7 +35,7 @@ put "/events/:id", to: "events#edit"
 delete "/events/:id", to: "events#delete"
 get "/user/:id/events/calendar", to: "events#calendar_user_index"
 get "/events/:id", to: "events#find_id"
-get "/group/events/members", to: "events#member_events_index"
+
 
   #MEMBERSHIP CONTROLLER
 get "/group/:id/members", to: "memberships#memberindex"

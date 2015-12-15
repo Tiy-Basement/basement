@@ -91,7 +91,8 @@ def groupevents
 end
 
 def member_events_index
-  @group = Group.where(group_id: params[:id])
+  @group = Group.find(params[:id])
+  binding.pry
   @events = @group.member_events
   render @events, status: :found
 
