@@ -26,9 +26,9 @@ get "/users/info", to: "users#user_info"
 
   #EVENTS CONTROLLER
 get "/user/:id/events", to: "events#user_event_index"
-get "/group/:id/events", to: "events#group_event_index"  #as: usereventindex
-post "/events", to: "events#create"
-post "/group/:id/events", to: "events#groupcreate"
+get "/events", to: "events#event_index"  #for admin use only
+post "/events", to: "events#create" #creates a user event
+post "/group/:id/events", to: "events#groupcreate" #creates an event under a group
 put "/events/:id", to: "events#edit"
 delete "/events/:id", to: "events#delete"
 get "/user/:id/events/calendar", to: "events#calendar_user_index"
@@ -39,7 +39,7 @@ post "/group/events/members", to: "events#memberevents"
   #MEMBERSHIP CONTROLLER
 get "/group/:id/members", to: "memberships#memberindex"
 post "/group/member", to: "memberships#add"
-delete "/group/:id/member/:id", to: "memberships#delete"
+delete "/group/:id/member/:user_id", to: "memberships#delete"
 
   #NOTES CONTROLLER
 get "/notes", to: "notes#index"
