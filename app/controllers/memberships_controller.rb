@@ -2,7 +2,8 @@ class MembershipsController < ApplicationController
 	
 #cary is sending us Access-Token, Group Name, Join Password
   	def add
-  		@member = User.find_by(username: params[:username])
+  		#@member = User.find_by(username: params[:username])
+      @member = current_user
   		@group = Group.find_by(name: params[:name])
   		@member.groups << @group
 		render "member.json.jbuilder", status: :created

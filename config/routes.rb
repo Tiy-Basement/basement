@@ -27,8 +27,8 @@ get "/users/info", to: "users#user_info"
   #EVENTS CONTROLLER
 get "/user/:id/events", to: "events#user_event_index"
 get "/group/:id/events", to: "events#group_event_index"  #as: usereventindex
-post "/events", to: "events#create"
-post "/group/:id/events", to: "events#groupcreate"
+post "/events", to: "events#create" #creates a user event
+post "/group/:id/events", to: "events#groupcreate" #creates an event under a group
 put "/events/:id", to: "events#edit"
 delete "/events/:id", to: "events#delete"
 get "/user/:id/events/calendar", to: "events#calendar_user_index"
