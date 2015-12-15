@@ -84,6 +84,7 @@ class EventsController < ApplicationController
 def groupevents
   @events = Event.where(group_id: params[:group_id])
   render "events.json.jbuilder", status: :found
+  #use already created template?
 end
 
 def memberevents
@@ -91,6 +92,8 @@ def memberevents
   @users.each do |user|
     @events = Event.where(user_id: user.id)
     #append to all events
+    #note to self
+    #append results to temp table or render each group of user events as a partial?
   end
 
   
