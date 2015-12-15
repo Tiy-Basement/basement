@@ -56,7 +56,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     #binding.pry
     @event.destroy
-    render json: "Hopefully shit was destroyed.  Nobody knows for sure.", status: :ok
+    render json: {"Hopefully shit was destroyed.  Nobody knows for sure."}, status: :ok
   end
 
   def user_event_index
