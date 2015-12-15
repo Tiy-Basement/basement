@@ -53,7 +53,7 @@ class EventsController < ApplicationController
   end
 
   def delete
-    @event = Event.find(id: params[:id])
+    @event = Event.find_by(id: params[:id])
     @event.destroy
   end
 
@@ -68,8 +68,8 @@ class EventsController < ApplicationController
   end
 
   def event_index
-    @events = Event.all
-    render "groupindex.json.jbuilder", status: :ok
+    @events = Event.where(title: null)
+    render "alleventindex.json.jbuilder", status: :ok
   end
 
   def calendar_event_index
