@@ -90,12 +90,14 @@ def groupevents
 end
 
 def memberevents
+  all_the_things = Array.new
   @users = Group.users.where(id: params[:group_id])
-  @users.each do |user|
-    @events = Event.where(user_id: user.id)
-    #append to all events
-    #note to self
-    #append results to temp table or render each group of user events as a partial?
+    @users.each do |user|
+      @events = Event.where(user_id: user.id)
+        all_the_things.add(@events)
+    end
+    render :json=>all_the_things , status: :found
+
   end
 
   
