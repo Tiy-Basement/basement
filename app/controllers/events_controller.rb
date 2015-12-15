@@ -54,7 +54,7 @@ class EventsController < ApplicationController
 
   def delete
     @event = Event.find(params[:id])
-    binding.pry
+    #binding.pry
     @event.destroy
     render json: "Hopefully shit was destroyed.  Nobody knows for sure.", status: :ok
   end
