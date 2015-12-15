@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
 
   def create
+    if @event == nil
+      render json: { errors: @user.errors.full_messages }, status: :no_content
+    else
     @event = Event.new(title: params[:title],
                        start: params[:start],
                        end: params[:end],
@@ -20,6 +23,7 @@ class EventsController < ApplicationController
       end
     end
     #code to send text/email alert goes here
+  end
 
   def groupcreate
     @event = Event.new(title: params[:title],
