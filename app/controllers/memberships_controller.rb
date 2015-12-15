@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
 	
-
+#cary is sending us Access-Token, Group Name, Join Password
   	def add
   		@member = User.find_by(username: params[:username])
   		@group = Group.find_by(name: params[:name])
@@ -11,7 +11,7 @@ class MembershipsController < ApplicationController
 	def remove
     	@member = current_user.members.find_by(user_id: params[:user_id],group_id: params[:group_id])
 		@member.destroy
-		render "killmember.json.jbuilder", status: :removed_permenently
+		render "killmember.json.jbuilder", status: :removed_permanently
 	end
 
 	def memberindex

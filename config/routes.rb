@@ -37,8 +37,8 @@ post "/group/events", to: "events#groupevents"
 post "/group/events/members", to: "events#memberevents"
 
   #MEMBERSHIP CONTROLLER
-post "/group/member", to: "memberships#add"
 get "/group/:id/members", to: "memberships#memberindex"
+post "/group/member", to: "memberships#add"
 delete "/group/:id/member/:id", to: "memberships#delete"
 
   #NOTES CONTROLLER
