@@ -94,6 +94,7 @@ def member_events_index
   @group = Group.where(group_id: params[:id])
   @events = @group.member_events
   render @events, status: :found
+
 end
 
 end

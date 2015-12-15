@@ -5,8 +5,7 @@ get "/groups", to: "groups#index"
 post "/group", to: "groups#create"
 put "/group/:id", to: "groups#edit"
 delete "/group/:id", to: "groups#delete"
-#post "/group/:id/member", to: "groups#addmember"
-#delete "/group/:id/member", to: "groups#deletemember"
+get "/group/:id/info", to: "groups#info"
 
   #COOKIE CONTROLLER
 get "/cookie", to: "cookie#get"
