@@ -11,7 +11,7 @@ class EventsController < ApplicationController
                         )
       if @event.save
         if @event == nil
-          render json: "Sorry it's freaking empty", status: :no_content
+          render json: {"Sorry it's freaking empty"}, status: :no_content
         else
         render "create.json.jbuilder", status: :created
         # render json: { user: @user }, status: :ok
