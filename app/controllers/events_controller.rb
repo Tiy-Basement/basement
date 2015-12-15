@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
 
   def create
-    if @event == nil
-      render json: { errors: @user.errors.full_messages }, status: :no_content
-    else
     @event = Event.new(title: params[:title],
                        start: params[:start],
                        end: params[:end],
@@ -13,15 +10,18 @@ class EventsController < ApplicationController
                        group_id: params[:group_id]
                         )
       if @event.save
+        if @event == nil
+          render json: "Sorry it's freaking empty", status: :no_content
+        else
         render "create.json.jbuilder", status: :created
         # render json: { user: @user }, status: :ok
           # status: 201
+        end
       else
         render json: { errors: @user.errors.full_messages },
           status: :unprocessable_entity
           # status: 422
       end
-    end
     #code to send text/email alert goes here
   end
 
