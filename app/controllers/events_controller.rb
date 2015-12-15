@@ -54,7 +54,6 @@ class EventsController < ApplicationController
 
   def delete
     @event = Event.find(params[:id])
-    #binding.pry
     @event.destroy
      render json: { errors: @user.errors.full_messages }
   end
@@ -62,7 +61,6 @@ class EventsController < ApplicationController
   def user_event_index
     #@user = User.find_by(id: params[:id]) #need to implement query params for start and end
     @events = Event.where(user_id: params[:id])
-    #binding.pry
     #@events = @user.events.all
 
     #@events = current_user.events
@@ -84,17 +82,16 @@ class EventsController < ApplicationController
     render "id.json.jbuilder", status: :ok
   end
 
-def groupevents
-  @events = Event.where(group_id: params[:id])
-  render "events.json.jbuilder", status: :ok
-  #use already created template?
-end
+  def groupevents
+    @events = Event.where(group_id: params[:id])
+    render "events.json.jbuilder", status: :ok
+  end
 
-def member_events_index
-  @group = Group.where(group_id: params[:id])
-  @events = @group.member_events
-  render @events, status: :found
+  def member_events_index
+    @group = Group.where(group_id: params[:id])
+    @events = @group.member_events
+    render @events, status: :found
 
-end
+  end
 
 end
