@@ -11,15 +11,15 @@ class EventsController < ApplicationController
                         )
       if @event.save
         if @event == nil
-          render json: {"Sorry it's freaking empty"}, status: :no_content
+           render json: { errors: @user.errors.full_messages }
         else
         render "create.json.jbuilder", status: :created
         # render json: { user: @user }, status: :ok
           # status: 201
         end
       else
-        render json: { errors: @user.errors.full_messages },
-          status: :unprocessable_entity
+        render json: { errors: @user.errors.full_messages }
+         
           # status: 422
       end
     #code to send text/email alert goes here
@@ -56,7 +56,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     #binding.pry
     @event.destroy
-    render json: {"Hopefully shit was destroyed.  Nobody knows for sure."}, status: :ok
+     render json: { errors: @user.errors.full_messages }
   end
 
   def user_event_index
