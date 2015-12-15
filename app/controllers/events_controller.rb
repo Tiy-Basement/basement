@@ -87,7 +87,7 @@ class EventsController < ApplicationController
 
 def groupevents
   @events = Event.where(group_id: params[:id])
-  render "events.json.jbuilder", status: :found
+  render "events.json.jbuilder", status: :ok
   #use already created template?
 end
 
