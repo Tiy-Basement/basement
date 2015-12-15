@@ -53,8 +53,10 @@ class EventsController < ApplicationController
   end
 
   def delete
-    @event = Event.find_by(id: params[:id])
+    @event = Event.find(params[:id])
+    #binding.pry
     @event.destroy
+    render json: "Hopefully shit was destroyed.  Nobody knows for sure.", status: :ok
   end
 
   def user_event_index
@@ -68,7 +70,7 @@ class EventsController < ApplicationController
   end
 
   def event_index
-    @events = Event.where(title: null)
+    @events = Event.all
     render "alleventindex.json.jbuilder", status: :ok
   end
 
@@ -84,7 +86,7 @@ class EventsController < ApplicationController
   end
 
 def groupevents
-  @events = Event.where(group_id: params[:group_id])
+  @events = Event.find(params[:id])
   render "events.json.jbuilder", status: :found
   #use already created template?
 end
