@@ -55,7 +55,7 @@ class EventsController < ApplicationController
   def delete
     @event = Event.find(params[:id])
     @event.destroy
-    status: :ok
+    render status: :ok
   end
 
   def user_event_index
