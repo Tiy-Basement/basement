@@ -11,15 +11,15 @@ class EventsController < ApplicationController
                         )
       if @event.save
         if @event == nil
-          render json: "Sorry it's freaking empty", status: :no_content
+           render json: { errors: @user.errors.full_messages }
         else
         render "create.json.jbuilder", status: :created
         # render json: { user: @user }, status: :ok
           # status: 201
         end
       else
-        render json: { errors: @user.errors.full_messages },
-          status: :unprocessable_entity
+        render json: { errors: @user.errors.full_messages }
+         
           # status: 422
       end
     #code to send text/email alert goes here
@@ -54,15 +54,13 @@ class EventsController < ApplicationController
 
   def delete
     @event = Event.find(params[:id])
-    #binding.pry
     @event.destroy
-    render json: "Hopefully shit was destroyed.  Nobody knows for sure.", status: :ok
+     render json: { errors: @user.errors.full_messages }
   end
 
   def user_event_index
     #@user = User.find_by(id: params[:id]) #need to implement query params for start and end
     @events = Event.where(user_id: params[:id])
-    #binding.pry
     #@events = @user.events.all
 
     #@events = current_user.events
@@ -84,18 +82,19 @@ class EventsController < ApplicationController
     render "id.json.jbuilder", status: :ok
   end
 
-def groupevents
-  @events = Event.where(group_id: params[:id])
-  render "events.json.jbuilder", status: :ok
-  #use already created template?
-end
+  def groupevents
+    @events = Event.where(group_id: params[:id])
+    render "events.json.jbuilder", status: :ok
+  end
 
-def member_events_index
-  @group = Group.find(params[:id])
-  binding.pry
-  @events = @group.member_events
-  render @events, status: :found
-
-end
+  def member_events_index
+    @group = Group.find(params[:id])
+    user_ids = @group.users.pluck(:id)
+    @events = Event.where(user_id: user_ids)
+    #binding.pry
+    #@events = @group.member_events
+    #binding.pry
+    render "events.json.jbuilder", status: :ok
+  end
 
 end
