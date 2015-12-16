@@ -40,7 +40,7 @@ get "/events/:id", to: "events#find_id"
   #MEMBERSHIP CONTROLLER
 get "/group/:id/members", to: "memberships#memberindex"
 post "/group/member", to: "memberships#add"
-#delete "/group/:id/member/:user_id", to: "memberships#remove"
+delete "/group/:id/member/:user_id", to: "memberships#remove"
 
   #NOTES CONTROLLER
 get "/notes", to: "notes#index"
