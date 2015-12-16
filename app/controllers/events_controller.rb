@@ -90,7 +90,9 @@ class EventsController < ApplicationController
   def member_events_index
     @group = Group.find(params[:id])
     user_ids = @group.users.pluck(:id)
-    @events = Event.where(user_id: user_ids)
+    @allevents = Event.where(user_id: user_ids)
+    @events = @allevents.where(group_id: nil)
+    binding.pry
     #binding.pry
     #@events = @group.member_events
     #binding.pry
