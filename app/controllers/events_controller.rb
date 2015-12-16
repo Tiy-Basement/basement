@@ -60,7 +60,7 @@ class EventsController < ApplicationController
 
   def user_event_index
     #@user = User.find_by(id: params[:id]) #need to implement query params for start and end
-    @events = Event.where(user_id: params[:id])
+    @events = Event.where(user_id: params[:id]).where.(group_id: nil)
     #@events = @user.events.all
 
     #@events = current_user.events
@@ -90,10 +90,10 @@ class EventsController < ApplicationController
   def member_events_index
     @group = Group.find(params[:id])
     user_ids = @group.users.pluck(:id)
-    @events = Event.where(user_id: user_ids)
+    @memberevents = Event.where(user_id: user_ids)
+    @events = @memberevents.where(group_id: nil)
     #binding.pry
-    #@events = @group.member_events
-    #binding.pry
+    #@events = @userevents.where.not(group_id: @group.id)
     render "events.json.jbuilder", status: :ok
   end
 
