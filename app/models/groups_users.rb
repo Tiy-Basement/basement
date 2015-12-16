@@ -1,4 +1,4 @@
-class Groups_Users < ActiveRecord::Base
+class GroupsUsers < ActiveRecord::Base
   has_many :users
   has_many :groups
 end
