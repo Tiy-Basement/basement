@@ -60,7 +60,7 @@ class EventsController < ApplicationController
 
   def user_event_index
     #@user = User.find_by(id: params[:id]) #need to implement query params for start and end
-    @events = Event.where(user_id: params[:id]).where.(group_id: nil)
+    @events = Event.where(user_id: params[:id]).where(group_id: nil)
     #@events = @user.events.all
 
     #@events = current_user.events
@@ -96,5 +96,6 @@ class EventsController < ApplicationController
     #@events = @userevents.where.not(group_id: @group.id)
     render "events.json.jbuilder", status: :ok
   end
+
 
 end
