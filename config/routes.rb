@@ -33,7 +33,7 @@ post "/events", to: "events#create" #creates a user event
 post "/group/:id/events", to: "events#groupcreate" #creates an event under a group
 put "/events/:id", to: "events#edit"
 delete "/events/:id", to: "events#delete"
-get "/user/:id/events/calendar", to: "events#calendar_user_index"
+get "/user/:id/groups/events", to: "events#usergroup_events_index"
 get "/events/:id", to: "events#find_id"
 
 

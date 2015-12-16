@@ -91,9 +91,18 @@ class EventsController < ApplicationController
     @group = Group.find(params[:id])
     user_ids = @group.users.pluck(:id)
     @memberevents = Event.where(user_id: user_ids)
-    @events = @memberevents.where(group_id: nil)
-    #binding.pry
+    @events = @memberevents.where("group_id != ? OR group_id IS NULL", @group.id)
+    binding.pry
     #@events = @userevents.where.not(group_id: @group.id)
+    render "events.json.jbuilder", status: :ok
+  end
+
+  def usergroup_events_index
+    @user = User.find(params[:id])
+    binding.pry
+    group_ids = @user.groups.pluck(:id)
+    binding.pry
+    @events = Event.where(group_id: group_ids)
     render "events.json.jbuilder", status: :ok
   end
 
