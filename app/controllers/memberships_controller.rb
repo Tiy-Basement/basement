@@ -8,11 +8,11 @@ class MembershipsController < ApplicationController
 		render "member.json.jbuilder", status: :created
 	end
 
-	def remove
-		@member = current_user.groups.find(params[:id])
-    	@member.destroy
-		render "killmember.json.jbuilder", status: :removed_permanently
-	end
+	#def remove
+	#	@member = 
+  #  	@member.destroy
+	#	render "killmember.json.jbuilder", status: :removed_permanently
+	#end
 
 	def memberindex
       @group = Group.find(params[:id])
