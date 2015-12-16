@@ -9,7 +9,7 @@ class MembershipsController < ApplicationController
 	end
 
 	def remove
-		@group = Groups_Users.where(user_id: params[:user_id], group_id: params[:id]).delete_all
+		@group = Groups_User.where(user_id: params[:user_id], group_id: params[:id]).delete_all
 		#@group.delete
 		render "killmember.json.jbuilder", status: :removed_permanently
 	end
