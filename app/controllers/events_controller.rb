@@ -55,7 +55,7 @@ class EventsController < ApplicationController
   def delete
     @event = Event.find(params[:id])
     @event.destroy
-     render json: { errors: @user.errors.full_messages }
+    status: :ok
   end
 
   def user_event_index
